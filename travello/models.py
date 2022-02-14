@@ -7,16 +7,10 @@ from django.db import models
 from datetime import date, datetime
 
 # Create your models here.
-class Destination(models.Model):
-    name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to = 'pics')
-    desc = models.TextField()
-    price = models.IntegerField()
-    offer = models.BooleanField(default=False)
 
 class Category(models.Model):
     Name = models.CharField(max_length=100)
-    Name_of_Buisness = models.IntegerField(default=1,editable=False)
+    Num_of_Buisness = models.IntegerField(default=1)
     class Meta:
         verbose_name = ("Category")
         verbose_name_plural = ("Categories")
@@ -31,11 +25,12 @@ class Restaurant(models.Model):
     Longitude = models.CharField(max_length=100)
     IsOpen = models.BooleanField(default=False)
     Category = models.CharField(max_length=100)
-    Stars = models.IntegerField(default=1,editable=False)
-    ReviewCount = models.IntegerField(default=1,editable=False)
+    Stars = models.IntegerField(default=1)
+    ReviewCount = models.IntegerField(default=1)
 
 class Review(models.Model):
     Restaurant_Id = models.IntegerField()
-    Stars = models.IntegerField(default=1, editable = False)
+    Stars = models.IntegerField(default=1)
     Date = models.DateField(default = datetime.now, editable=False)
     Text = models.TextField()
+
